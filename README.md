@@ -2,7 +2,7 @@
 
 This is a plugin for [Logstash](https://github.com/elasticsearch/logstash).
 
-This filter add rancher metadata to messages that contain a Docker container ID.
+This filter add rancher metadata to messages that contain a Docker container ID. It's heavily inspired from [logstash-filter-docker_metadata](https://github.com/tgermain/logstash-filter-docker_metadata).
 
 At current, the filter enriches the messages with the following tags
 - Container name (name)
@@ -16,7 +16,6 @@ It is fully free and fully open source. The license is Apache 2.0, meaning you a
 
 Configuration used : `logstash agent -e "filter { rancher_metadata {} }"`
 
-```
 ## Filter parameters
 
 | name                  | default value                 | comment |
