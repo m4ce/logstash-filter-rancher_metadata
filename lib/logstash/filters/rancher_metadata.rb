@@ -6,7 +6,6 @@ require 'lru_redux'
 require 'rancher-metadata/api'
 
 class LogStash::Filters::RancherMetadata < LogStash::Filters::Base
-  # Setting the config_name here is required.
   config_name "rancher_metadata"
 
   config :api_url,
@@ -34,7 +33,7 @@ class LogStash::Filters::RancherMetadata < LogStash::Filters::Base
     :deprecated => false
 
   def get_metadata(container_id)
-    self.metadata_api.get_containers.each do |container|
+    @metadata_api.get_containers.each do |container|
       return if container['uuid'] == container_id
     end
 
