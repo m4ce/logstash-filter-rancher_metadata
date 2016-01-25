@@ -3,13 +3,11 @@
 require "logstash/filters/base"
 require "logstash/namespace"
 require 'lru_redux'
-require 'rancher-metadata'
+require 'rancher-metadata/api'
 
 class LogStash::Filters::RancherMetadata < LogStash::Filters::Base
-
   # Setting the config_name here is required.
   config_name "rancher_metadata"
-
 
   config :api_url,
     :validate => :array,
