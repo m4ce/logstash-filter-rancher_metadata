@@ -2,7 +2,6 @@
 
 require "logstash/filters/base"
 require "logstash/namespace"
-require 'json'
 require 'lru_redux'
 require 'rancher-metadata'
 
