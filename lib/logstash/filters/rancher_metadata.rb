@@ -16,7 +16,7 @@ class LogStash::Filters::RancherMetadata < LogStash::Filters::Base
 
   config :field_docker_id,
     :validate => :string,
-    :default => 'path',
+    :default => 'container_name',
     :required => false,
     :deprecated => false
 
