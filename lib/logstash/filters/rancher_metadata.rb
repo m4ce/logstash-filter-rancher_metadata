@@ -34,7 +34,7 @@ class LogStash::Filters::RancherMetadata < LogStash::Filters::Base
 
   def get_metadata(container_id)
     @metadata_api.get_containers.each do |container|
-      return if container['uuid'] == container_id
+      return container if container['uuid'] == container_id
     end
 
     nil
@@ -59,7 +59,7 @@ class LogStash::Filters::RancherMetadata < LogStash::Filters::Base
       event['rancher'] = {}
 
       @tags.each do |tag|
-        event['rancher'][tag] = metadata[tag]
+        event['rancher'][tag] = metadata[tag] if metadata.has_key?(tag)
       end
     end
 
