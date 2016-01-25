@@ -12,7 +12,7 @@ At current, the filter enriches the messages with the following tags
 
 It is fully free and fully open source. The license is Apache 2.0, meaning you are pretty much free to use it however you want in whatever way.
 
-## Usage 
+## Usage
 
 Configuration used : `logstash agent -e "filter { rancher_metadata {} }"`
 
@@ -87,5 +87,5 @@ It is more important to the community that you are able to contribute.
 
 For more information about contributing, see the [CONTRIBUTING](https://github.com/elasticsearch/logstash/blob/master/CONTRIBUTING.md) file.
 
-## Licence
-It is fully free and fully open source. The license is Apache 2.0, meaning you are pretty much free to use it however you want in whatever way.
+## Author
+Matteo Cerutti - <matteo.cerutti@hotmail.co.uk>
