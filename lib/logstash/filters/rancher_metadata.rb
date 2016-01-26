@@ -32,13 +32,19 @@ class LogStash::Filters::RancherMetadata < LogStash::Filters::Base
     :required => false,
     :deprecated => false
 
-  def get_metadata(container_id)
+  def get_metadata(id)
     begin
-      containers = @metadata_api.get_containers()
+      # https://github.com/rancher/python-agent/commit/5fb936cdc56d6b41867a410772b20305deb48ed0
+      if id =~ /^r-/
+        name = id[/^r-(.*)/, 1]
 
-      if containers and containers.size > 0
-        containers.each do |container|
-          return container if container['uuid'] == container_id
+        return @metadata_api.get_container(name)
+      else
+        containers = @metadata_api.get_containers()
+        if containers and containers.size > 0
+          containers.each do |container|
+            return container if container['uuid'] == id
+          end
         end
       end
     rescue
