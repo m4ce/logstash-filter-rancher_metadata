@@ -33,8 +33,16 @@ class LogStash::Filters::RancherMetadata < LogStash::Filters::Base
     :deprecated => false
 
   def get_metadata(container_id)
-    @metadata_api.get_containers.each do |container|
-      return container if container['uuid'] == container_id
+    begin
+      containers = @metadata_api.get_containers()
+
+      if containers and containers.size > 0
+        containers.each do |container|
+          return container if container['uuid'] == container_id
+        end
+      end
+    rescue
+      @logger.error("Caught exception (#{$!})")
     end
 
     nil
